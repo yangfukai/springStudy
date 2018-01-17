@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="windows98" class="com.dongnao.ioc.demo3.Windows98"/>
+	<bean id="windows2000" class="com.dongnao.ioc.demo3.Windows2000"/>
+	<bean id="windows7" class="com.dongnao.ioc.demo3.Windows7"/>
+	
+	<bean id="computer" class="com.dongnao.ioc.demo3.Computer">
+		<!-- <constructor-arg ref="windows7" /> -->
+		<property name="system" ref="windows7"></property>
+	</bean>
+</beans>
