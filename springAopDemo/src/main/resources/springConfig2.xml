@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/aop
+	http://www.springframework.org/schema/aop/spring-aop-3.2.xsd">
+	
+	<bean id="aopDemo" class="com.dongnao.aop.demo2.AopDemo"/>
+	
+	<bean id="windows98" class="com.dongnao.aop.demo2.Windows98"/>
+	<bean id="windows2000" class="com.dongnao.aop.demo2.Windows2000"/>
+	<bean id="windows7" class="com.dongnao.aop.demo2.Windows7"/>
+	
+	<bean id="computer" class="com.dongnao.aop.demo2.Computer">
+		<constructor-arg ref="windows7" />
+	</bean>
+	
+	<aop:config>
+		<aop:aspect ref="aopDemo">
+			<aop:pointcut id="computerPoint" expression="execution(void com.dongnao.aop.demo2.Computer.work(..))"/>
+			<aop:around method="aopAround" pointcut-ref="computerPoint"/>
+		</aop:aspect>
+	</aop:config>
+</beans>
